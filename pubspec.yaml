@@ -1,0 +1,47 @@
+name: my_ayurvedic_app
+description: An Ayurvedic Ratio Calculator Application for mobile and web platforms.
+
+publish_to: 'none' # Remove this line if publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"  # Use the appropriate Flutter SDK version based on your setup
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Additional dependencies for your app
+  provider: ^6.0.3
+  get_it: ^7.2.0
+  screenshot: ^3.0.0  # Updated to the requested version
+  path_provider: ^2.0.11  # Provides access to device storage paths
+  permission_handler: ^10.2.0  # Added permission handler dependency
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/th.jpg  # Update this path based on your app's assets
+
+android:
+  minSdkVersion: 21
+  uses-permission:
+    - android.permission.WRITE_EXTERNAL_STORAGE  # For external storage access
+    - android.permission.READ_EXTERNAL_STORAGE   # For reading external storage
+  application:
+    android:requestLegacyExternalStorage: true  # This is required for Android 10+
+
+ios:
+  deploymentTarget: 10.0
+
+  # Add required permission descriptions in your Info.plist
+  info_plist:
+    NSPhotoLibraryUsageDescription: "We need access to your photo library to save images."
+    NSCameraUsageDescription: "We need access to your camera to take screenshots."
+    NSMicrophoneUsageDescription: "We need access to your microphone for audio recording."
